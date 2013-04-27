@@ -247,7 +247,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 			req.send(null);
 			var response = req.responseText;
 			var aux;
-			var xpathQuery = xpath('//table/tbody/tr/td/div/span[@style="font-size: x-large;"]');
+			var xpathQuery = xpath('//table/tbody/tr/td/div/span[@style="font-size:x-large;"]');
 			for(var i=0; i<xpathQuery.snapshotLength; i++)
 			{
 				var target = xpathQuery.snapshotItem(i);
