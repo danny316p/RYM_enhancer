@@ -252,8 +252,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 			{
 				var target = xpathQuery.snapshotItem(i);
 				var path = target.lastChild.pathname;
-				var href = 'href=\"';
-				for(var e=0; e<path.length; e++) {href = href+"&#"+path.charCodeAt(e)+";";}
+				var href = 'href=\"' + path;
 				aux = response.indexOf(href);
 				if(aux!=-1)
 				{
