@@ -237,7 +237,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 		var navtop = div[0].getElementsByTagName('div');
 		var ul = navtop[1].getElementsByTagName('ul');
 		var li = ul[0].getElementsByTagName('li');
-		var username = li[4].firstChild.textContent;
+		var username = li[6].firstChild.textContent;
 		if(username!='log in / sign up')
 		{
 			var urlRequest = 'http://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
