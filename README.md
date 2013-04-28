@@ -12,7 +12,7 @@ All these features are optional and you can activate or deactivate using the use
 This repository is based on the source code and documentation for the RYM enhancer script, as retrieved from: <http://userscripts.org/scripts/show/38361> . Somewhere along the way, <http://www.rateyourmusic.com> (generally abbreviated as RYM) changed their chart code in a few minor ways that broke the original script. This repository begins with my minor changes, which restore the script's original functionality by making the hard-coded expectations match the current version of the site. Shortly after, I contacted the original author for permission to upload my repository with his code to github and slap on a free/open license - which brings us here.
 
 ###Installation
-The main script can be installed in Firefox through Greasemonkey or in Chrome through Tampermonkey.
+The main script can be installed in Firefox through Greasemonkey or in Chrome through Tampermonkey. You can use the "raw" version of the code above to get the absolute latest version or get the latest "released" version from <http://userscripts.org/scripts/show/166030>
 
 ###Goals for this project
 1. Continued maintenance of the script to handle future changes to RYM.
