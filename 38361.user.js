@@ -234,7 +234,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 	if(gUrlSubstr[3]=="charts"||(gUrlSubstr[3].slice(0,11))=="customchart")
 	{
 		var div = document.getElementsByTagName('div');
-		var navtop = div[0].getElementsByTagName('div');
+		var navtop = div[1].getElementsByTagName('div');
 		var ul = navtop[1].getElementsByTagName('ul');
 		var li = ul[0].getElementsByTagName('li');
 		var username = li[6].firstChild.textContent;
