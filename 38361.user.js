@@ -258,7 +258,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 				{
 					recordsIOwn++;
 					if(GM_getValue('chartsHighlighter', 1))
-						{target.parentNode.parentNode.parentNode.style.background="rgb(255,255,204)";}
+						{target.parentNode.parentNode.style.background="rgb(255,255,204)";}
 				}
 				records++;
 			}
