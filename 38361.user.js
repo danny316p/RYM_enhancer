@@ -98,6 +98,7 @@ function ratingsDuplicator() /*Duplicates each 0.5-5 rating on the site*/
 	}
 	else if(gUrlSubstr[3]=="release")
 	{
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span'));
 		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span'));
 		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span/span'));
 		parseXpath(xpath('//a[@class="ratingbutton"]')); 							/*Rating buttons*/
