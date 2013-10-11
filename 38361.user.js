@@ -220,9 +220,7 @@ function colorizer() /*Gives color to ratings*/
 	}
 	else if(gUrlSubstr[3]=="release")
 	{
-		applyColor(xpath('//span[@style="font-size: 1.3em; font-weight: bold;"]'));	/*Rating*/
-		applyColor(xpath('//span[@style="font-size: 1.3em; font-weight: bold; color: rgb(51, 136, 51);"]')); 
-																						/*Friends rating*/
+		applyColor(xpath('//span[@class="avg_rating"]'));	/*Rating*/
 	}
 	else if(gUrlSubstr[3]=="charts"||(gUrlSubstr[3].slice(0,11))=="customchart")
 		{applyColor(xpath('//a/b[1]'));}												/*Small ratings at charts*/
