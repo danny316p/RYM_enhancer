@@ -215,7 +215,7 @@ function colorizer() /*Gives color to ratings*/
 	
 	if(gUrlSubstr[3]=="artist")
 	{
-		applyColor(xpath('//td/div[@class="medium"]'));									/*Album rating*/					
+		applyColor(xpath('//td/div[@class="medium"]'));									/*Album rating*/
 		applyColor(xpath('//div[@class="medium"]/span'));								/*Grey album ratings*/
 	}
 	else if(gUrlSubstr[3]=="release")
