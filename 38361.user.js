@@ -98,7 +98,8 @@ function ratingsDuplicator() /*Duplicates each 0.5-5 rating on the site*/
 	}
 	else if(gUrlSubstr[3]=="release")
 	{
-		parseXpath(xpath('//table[@class="mbgen"]/tbody/tr/td/span[not(@id="prediction")]'));
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span'));
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span/span'));
 		parseXpath(xpath('//a[@class="ratingbutton"]')); 							/*Rating buttons*/
 		parseXpath(xpath('//a[@class="ratingbuttonhc"]')); 							/*Used rating button*/
 		parseXpath(xpath('//tbody/tr/td[@style="width: 3em;"]')); 					/*Rating distributions*/
