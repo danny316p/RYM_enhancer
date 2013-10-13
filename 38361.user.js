@@ -98,9 +98,11 @@ function ratingsDuplicator() /*Duplicates each 0.5-5 rating on the site*/
 	}
 	else if(gUrlSubstr[3]=="release")
 	{
-		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span'));
-		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span'));
-		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span/span'));
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span'));			/*Friends' Rating*/
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span'));		/*Average Rating*/
+		parseXpath(xpath('//table[@class="album_info"]/tbody/tr/td/span/span/span'));		/*Maximum Rating*/
+
+		/* These next four lines don't do anything in RYM 2.5 */
 		parseXpath(xpath('//a[@class="ratingbutton"]')); 							/*Rating buttons*/
 		parseXpath(xpath('//a[@class="ratingbuttonhc"]')); 							/*Used rating button*/
 		parseXpath(xpath('//tbody/tr/td[@style="width: 3em;"]')); 					/*Rating distributions*/
@@ -114,12 +116,20 @@ function ratingsDuplicator() /*Duplicates each 0.5-5 rating on the site*/
 
 function starRatingsDuplicator() /*Changes stars's alternative text to 1-10 ratings*/
 {
-	starPathQuery = xpath('//img[@width="77"]'); /*Star images*/
+	starPathQuery = xpath('//img[@width="90"]'); /*Star images*/
 	for(var i=0; i<starPathQuery.snapshotLength; i++)
 	{
 		var target = starPathQuery.snapshotItem(i);
 		var starSrc = target.src;
-		target.title = starSrc.substring((starSrc.lastIndexOf('/'))+1, starSrc.lastIndexOf('.'));
+		var rating = target.title.substring(0,4);
+		if(!isNaN(rating))
+		{
+			rating*=2;
+			if((rating-Math.floor(rating))==0)
+				{target.title = rating.toFixed(0) + " stars";}
+			else
+				{target.title = rating.toFixed(2) + " stars";}
+		}
 	}
 }
 
