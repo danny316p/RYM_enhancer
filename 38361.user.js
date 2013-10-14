@@ -4,6 +4,7 @@
 // @description	Adds a lot of new features to RYM
 // @include	http://rateyourmusic.com/*
 // @include	http://www.rateyourmusic.com/*
+// @version	1.0.0.1
 // ==/UserScript==//
 
 var url = document.URL;	
