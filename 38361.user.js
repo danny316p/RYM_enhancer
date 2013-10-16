@@ -189,7 +189,7 @@ function averageCalculator() /*Calculates average ratings for an artist and indi
 		globalAverage /= globalRecordNumber;
 		var row = document.createElement("tr");
 		var td = document.createElement("td");
-		var tdText = document.createTextNode("Rating");
+		var tdText = document.createTextNode("Artist Rating");
 		td.appendChild(tdText);
 		row.appendChild(td);
 		td = document.createElement("td");
