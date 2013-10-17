@@ -17,6 +17,8 @@ GM_registerMenuCommand("Calculate average ratings in artist pages", sAverageCalc
 GM_registerMenuCommand("Give color to ratings", sColorizer);
 GM_registerMenuCommand("Highlight records you own in charts", sChartsHighlighter);
 GM_registerMenuCommand("Gives the amount of records you own from a chart", sRecordAmount);
+GM_registerMenuCommand("Highlight records you own in lists", sListsHighlighter);
+GM_registerMenuCommand("Gives the amount of records you own from a list", sRecordAmountList);
 
 /*This checks user preferences and calls each function depending on them*/
 if(GM_getValue('averageCalculator', 1))		{averageCalculator();}
@@ -24,6 +26,7 @@ if(GM_getValue('colorizer', 1))				{colorizer();}
 if(GM_getValue('ratingsDuplicator', 1))		{ratingsDuplicator();}
 if(GM_getValue('starRatingsDuplicator', 1))	{starRatingsDuplicator();}
 chartsHighlighter();
+listsHighlighter();
 
 /*This functions are switches for the boolean parameters that control user options*/
 function sRatingsDuplicator()
@@ -67,6 +70,20 @@ function sRecordAmount()
 		{GM_setValue('recordAmount',1);}
 	else
 		{GM_setValue('recordAmount',0);}
+}
+function sListsHighlighter()
+{
+	if(!(GM_getValue('listsHighlighter', 0)))
+		{GM_setValue('listsHighlighter',1);}
+	else
+		{GM_setValue('listsHighlighter',0);}
+}
+function sRecordAmountList()
+{
+	if(!(GM_getValue('recordAmountList', 0)))
+		{GM_setValue('recordAmountList',1);}
+	else
+		{GM_setValue('recordAmountList',0);}
 }
 /*End of switch functions*/
 
@@ -293,7 +310,63 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 		}
 	}
 }
+
+function listsHighlighter() /*Highlights owned records from a chart page*/
+{
+	if(gUrlSubstr[3]=="list")
+	{
+		var div = document.getElementsByTagName('div');
+		var navtop = div[1].getElementsByTagName('div');
+		var ul = navtop[1].getElementsByTagName('ul');
+		var li = ul[0].getElementsByTagName('li');
+		var username = li[6].firstChild.textContent;
+		if(username!='log in / sign up')
+		{
+			var urlRequest = 'http://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
+			var req = new XMLHttpRequest;
+			var records=0; recordsIOwn=0;
+			req.open('GET', urlRequest, false);
+			req.send(null);
+			var response = req.responseText;
+			var aux;
+			var xpathQuery = xpath('//table/tbody/tr/td[@class="main_entry"]/h5');
+			for(var i=0; i<xpathQuery.snapshotLength; i++)
+			{
+				var target = xpathQuery.snapshotItem(i);
+				var path = target.firstChild.pathname;
+				var href = 'href=\"' + path;
+				aux = response.indexOf(href);
+				if(aux!=-1)
+				{
+					recordsIOwn++;
+					if(GM_getValue('listsHighlighter', 1))
+						{target.parentNode.parentNode.style.background="rgb(255,255,204)";}
+				}
+				records++;
+			}
+			if(GM_getValue('recordAmountList', 1))
+			{
+				var row = document.createElement('tr');
+				for(var i=0; i<3; i++)
+				{
+					var cell = document.createElement('td');
+					if(i==0) 		{cell.appendChild(document.createTextNode('You own'));}
+					else if(i==1)	{cell.appendChild(document.createTextNode(recordsIOwn+'/'+records));}
+					else 			{cell.appendChild(document.createTextNode('of these records'));}
+					cell.style.fontSize = '20px !important';
+					cell.style.fontWeight = 'bold';
+					cell.style.color = '#777777';
+					cell.style.textAlign = (i!=2) ? 'center' : 'left';
+					row.appendChild(cell);
+				}
+				target.parentNode.parentNode.parentNode.parentNode.appendChild(row);
+			}
+		}
+	}
+}
+
 function xpath(query) /*Parses xPath queries*/
 {
 	return document.evaluate(query, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 }
+
