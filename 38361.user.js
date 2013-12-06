@@ -2,6 +2,8 @@
 // @name		RYM enhancer rewrite
 // @namespace	http://rateyourmusic.com/
 // @description	Adds a lot of new features to RYM
+// @include	https://rateyourmusic.com/*
+// @include	https://www.rateyourmusic.com/*
 // @include	http://rateyourmusic.com/*
 // @include	http://www.rateyourmusic.com/*
 // @version	1.0.0.1
