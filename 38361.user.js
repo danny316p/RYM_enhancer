@@ -6,7 +6,7 @@
 // @include	https://www.rateyourmusic.com/*
 // @include	http://rateyourmusic.com/*
 // @include	http://www.rateyourmusic.com/*
-// @version	1.0.0.1
+// @version	1.0.0.2
 // ==/UserScript==//
 
 var url = document.URL;	
@@ -270,7 +270,7 @@ function chartsHighlighter() /*Highlights owned records from a chart page*/
 		var username = li[6].firstChild.textContent;
 		if(username!='log in / sign up')
 		{
-			var urlRequest = 'http://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
+			var urlRequest = 'https://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
 			var req = new XMLHttpRequest;
 			var records=0; recordsIOwn=0;
 			req.open('GET', urlRequest, false);
@@ -324,7 +324,7 @@ function listsHighlighter() /*Highlights owned records from a chart page*/
 		var username = li[6].firstChild.textContent;
 		if(username!='log in / sign up')
 		{
-			var urlRequest = 'http://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
+			var urlRequest = 'https://rateyourmusic.com/collection_p/'+username+'/d.a,a,l,o,r0.0-5.0,n9999,oo/';
 			var req = new XMLHttpRequest;
 			var records=0; recordsIOwn=0;
 			req.open('GET', urlRequest, false);
